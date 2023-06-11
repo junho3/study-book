@@ -3,11 +3,9 @@ package com.example.study.chapter4.code
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.types.shouldBeInstanceOf
-import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest
 class Chapter4Test(
-    private val chapter4ResultTest: Chapter4ResultTest,
+    private val chapter4ResultTest: Chapter4ResultTest = Chapter4ResultTest(),
 ) : DescribeSpec({
 
     describe("main 메소드는") {

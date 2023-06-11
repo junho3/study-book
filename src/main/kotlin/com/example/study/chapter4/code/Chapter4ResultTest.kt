@@ -1,10 +1,8 @@
 package com.example.study.chapter4.code
 
 import mu.KotlinLogging
-import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
-@Service
 class Chapter4ResultTest {
     fun main(transactionAmount: Long): PaymentApiResponse {
         return callPaymentApi(transactionAmount = transactionAmount)

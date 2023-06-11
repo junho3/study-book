@@ -3,11 +3,9 @@ package com.example.study.chapter5.code
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.shouldBe
-import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest
 class Chapter554Test(
-    private val chapter554: Chapter554,
+    private val chapter554: Chapter554 = Chapter554(),
 ) : DescribeSpec({
 
     describe("sendOwnerALetter 메소드는") {

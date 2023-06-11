@@ -1,8 +1,5 @@
 package com.example.study.chapter5.code
 
-import org.springframework.stereotype.Component
-
-@Component
 class Chapter554 {
     fun sendOwnerALetter(vehicle: Vehicle): String? {
         return getOwnersAddress(vehicle)
