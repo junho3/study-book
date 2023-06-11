@@ -9,34 +9,48 @@ class Chapter713ConstructorTest(
 ) : DescribeSpec({
 
     describe("createStudentByMainConstructor 메소드는") {
-        context("메소드가 호출된다면") {
-            it("주 생성자로 생성된 Student 객체를 리턴한다.") {
-                val result = chapter713Constructor.createStudentByMainConstructor()
+        context("id, name, age, score 파라미를 넘겼을 때") {
+            val id = 1
+            val name = "홍길동"
+            val age = 10
+            val score = 100
 
-                result.id shouldBe 1
-                result.score shouldBe 100
+            it("주 생성자로 생성된 Student 객체를 리턴한다.") {
+                val result = chapter713Constructor.createStudent(id, name, age, score)
+
+                result.id shouldBe id
+                result.name shouldBe name
+                result.age shouldBe age
+                result.score shouldBe score
             }
         }
-    }
 
-    describe("createStudentByMainConstructorWithDefaultScore 메소드는") {
-        context("메소드가 호출된다면") {
-            it("주 생성자로 생성된 Score가 null인 Student 객체를 리턴한다.") {
-                val result = chapter713Constructor.createStudentByMainConstructorWithDefaultScore()
+        context("id, name, age 파라미를 넘겼을 때") {
+            val id = 1
+            val name = "홍길동"
+            val age = 10
 
-                result.id shouldBe 2
+            it("score가 null인 주 생성자로 생성된 Student 객체를 리턴한다.") {
+                val result = chapter713Constructor.createStudent(id, name, age)
+
+                result.id shouldBe id
+                result.name shouldBe name
+                result.age shouldBe age
                 result.score.shouldBeNull()
             }
         }
-    }
 
-    describe("createStudentBySubConstructor 메소드는") {
-        context("메소드가 호출된다면") {
-            it("부 생성자로 생성된 Student 객체를 리턴한다.") {
-                val result = chapter713Constructor.createStudentBySubConstructor()
+        context("id, name 파라미터를 넘겼을 때") {
+            val id = 1
+            val name = "홍길동"
 
-                result.id shouldBe 3
+            it("age가 8이고, score가 null인 부 생성자로 생성된 Student 객체를 리턴한다.") {
+                val result = chapter713Constructor.createStudent(id, name)
+
+                result.id shouldBe id
+                result.name shouldBe name
                 result.age shouldBe 8
+                result.score.shouldBeNull()
             }
         }
     }

@@ -18,16 +18,16 @@ class Chapter713Constructor {
         }
     }
 
-    fun createStudentByMainConstructor(): Student {
-        return Student(1, "홍길동", 13, 100)
+    fun createStudent(id: Int, name: String, age: Int, score: Int?): Student {
+        return Student(id, name, age, score)
     }
 
-    fun createStudentByMainConstructorWithDefaultScore(): Student {
-        return Student(2, "김길동", 10)
+    fun createStudent(id: Int, name: String, age: Int): Student {
+        return Student(id, name, age)
     }
 
-    fun createStudentBySubConstructor(): Student {
-        return Student(3, "이길동")
+    fun createStudent(id: Int, name: String): Student {
+        return Student(id, name)
     }
 }
 
