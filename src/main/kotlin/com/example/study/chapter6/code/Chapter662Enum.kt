@@ -1,6 +1,6 @@
 package com.example.study.chapter6.code
 
-class Chapter662 {
+class Chapter662Enum {
     enum class Animal {
         DOG, CAT, CAW, FISH
     }
