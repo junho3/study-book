@@ -17,6 +17,22 @@ class Chapter721 {
         return textOption
     }
 
+    fun addFont(name: String): TextOption {
+        val fonts = mutableListOf(
+            Font(name = "고딕체", color = "검정색"),
+            Font(name = "굴림체", color = "검정색"),
+        )
+
+        val textOption = TextOption(
+            fonts = fonts,
+            fontSize = 1.1,
+        )
+
+        fonts.add(Font(name = name, color = "검정색"))
+
+        return textOption
+    }
+
     data class TextOption(
         val fonts: List<Font>,
         val fontSize: Double,

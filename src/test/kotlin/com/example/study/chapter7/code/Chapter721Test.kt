@@ -17,4 +17,16 @@ class Chapter721Test(
             }
         }
     }
+
+    describe("addFont 메소드는") {
+        context("name이 주어졌을 때") {
+            val name = "기울림체"
+            it("폰트를 추가한다.") {
+                val result = chapter721.addFont(name)
+
+                result.fonts.size shouldBe 3
+                result.fonts.last().name shouldBe name
+            }
+        }
+    }
 })
