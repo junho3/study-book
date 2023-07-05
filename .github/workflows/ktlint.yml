@@ -1,20 +1,22 @@
 name: reviewdog
 on: [pull_request]
+
 jobs:
   ktlint:
     name: Check Code Quality
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-      issues: 'write'
     runs-on: ubuntu-latest
+
     steps:
       - name: Clone repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
         with:
           fetch-depth: 1
+
       - name: ktlint
         uses: ScaCap/action-ktlint@master
         with:
           github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Change reporter
+          reporter: github-pr-review
+          android: true
+          fail_on_error: true
+          level: warning
