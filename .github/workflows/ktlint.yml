@@ -3,6 +3,10 @@ on: [pull_request]
 jobs:
   ktlint:
     name: Check Code Quality
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      issues: 'write'
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
