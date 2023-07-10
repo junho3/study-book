@@ -1,1 +1,1 @@
-rootProject.name = "study-good-code-bad-code"
+rootProject.name = "study-book"
