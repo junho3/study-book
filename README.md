@@ -18,3 +18,9 @@ https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study
 2023.07.12 ~
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/operatingsystemsthreeeasypieces
 ```
+
+## 가상 면접 사례로 배우는 대규모 시스템 설계 기초
+```
+2023.07.13 ~ 
+https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/systemdesigninterview
+```
