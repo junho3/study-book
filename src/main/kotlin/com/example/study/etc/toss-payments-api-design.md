@@ -97,6 +97,7 @@ https://youtu.be/E4_0WWqmF3M?feature=shared
 > 
 > 상황에 따라 다르겠지만, 내부 결제 API를 사용하는 프론트앤드 또는 주문 백엔드팀에서는 스펙을 동일하게 가져가는 것을 선호 했음  
 > 결제수단별로 파라미터 등을 제어하는 것을 원하지 않음  
+> API를 만드는 입장이 아닌 사용하는 입장도 고려해야한다고 느꼈던 계기  
 
 <img src="https://github.com/junho3/practice-java-spring-boot/assets/54342973/2f50238b-b548-445e-874a-90f94086f6ee">
 
@@ -106,4 +107,8 @@ https://youtu.be/E4_0WWqmF3M?feature=shared
 
 > 매직 넘버를 코드화한 것을 넘어서 헤더의 Accept-Language를 활용하여 국문 코드도 받을 수 있도록 함  
 
+<img src="https://github.com/junho3/practice-java-spring-boot/assets/54342973/d40fa299-6755-4b03-ac4d-d2d18e4aebe5">
 
+<img src="https://github.com/junho3/practice-java-spring-boot/assets/54342973/34b2f75d-a351-4eb0-913b-2f259032b4d9">
+
+<img src="https://github.com/junho3/practice-java-spring-boot/assets/54342973/ec050433-2088-4187-b689-2eaf63ff66e3">
