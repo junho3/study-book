@@ -21,6 +21,6 @@ https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study
 
 ## 가상 면접 사례로 배우는 대규모 시스템 설계 기초
 ```
-2023.07.13 ~ 
+2023.07.13 ~ 2023.09.08
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/systemdesigninterview
 ```
