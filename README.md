@@ -1,6 +1,6 @@
 # 스터디 기록용 레포
 
-## 개인 스터디
+## 개인
 
 ### Multithreaded JavaScript
 ```
@@ -15,7 +15,9 @@ https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/operatingsystemsthreeeasypieces
 ```
 
-## 그룹 스터디
+---
+
+## 그룹
 ```
 그룹명: Json 상하차
 인원: 6명
