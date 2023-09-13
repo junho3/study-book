@@ -19,9 +19,8 @@ https://product.kyobobook.co.kr/detail/S000001732402
 
 ---
 
-## 그룹
+## 그룹 (Json 상하차)
 ```
-그룹명: Json 상하차
 인원: 6명
 기간: 2023.05.19 ~
 ```
