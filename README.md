@@ -7,12 +7,14 @@
 2023.07.10 ~ 2023.07.11
 동시성 관련 챕터 1, 4, 5, 6, 8만 속독하여 기간이 짧음
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/multithreadedjavascript
+https://product.kyobobook.co.kr/detail/S000061353477
 ```
 
 ### 운영체제 아주 쉬운 세 가지 이야기
 ```
 2023.07.12 ~
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/operatingsystemsthreeeasypieces
+https://product.kyobobook.co.kr/detail/S000001732402
 ```
 
 ---
@@ -28,15 +30,18 @@ https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study
 ```
 2023.05.29 ~ 2023.07.07
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/goodcodebadcode
+https://product.kyobobook.co.kr/detail/S000061353995
 ```
 
 ### 가상 면접 사례로 배우는 대규모 시스템 설계 기초
 ```
 2023.07.13 ~ 2023.09.08
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/systemdesigninterview
+https://product.kyobobook.co.kr/detail/S000001033116
 ```
 
 ### 진화적 아키텍처
 ```
 2023.10.12 ~
+https://product.kyobobook.co.kr/detail/S000208693198
 ```
