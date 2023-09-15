@@ -87,7 +87,7 @@ https://youtu.be/E4_0WWqmF3M?feature=shared
 >   transactionAmount: 1000,
 >   cardNo: xxxxxxxx,
 >   phoneNo: null
-> }
+> }  
 > /v1/payments/phone
 > {
 >   transactionAmount: 1000,
