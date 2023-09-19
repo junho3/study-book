@@ -1,6 +1,6 @@
 # Batch Performance 극한으로 끌어올리기: 1억 건 데이터 처리를 위한 노력 / if(kakao)2022 소개
 
-https://youtu.be/L9K0l65wMbQ?feature=shared
+https://youtu.be/L9K0l65wMbQ?feature=shared  
 https://tech.kakaopay.com/post/ifkakao2022-batch-performance-read/
 
 41분짜리 영상
