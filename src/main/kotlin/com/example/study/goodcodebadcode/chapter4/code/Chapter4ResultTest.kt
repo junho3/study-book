@@ -1,6 +1,5 @@
 package com.example.study.goodcodebadcode.chapter4.code
 
-import com.example.study.chapter4.code.PaymentApiResponse
 import mu.KotlinLogging
 import java.time.LocalDateTime
 
