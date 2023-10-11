@@ -42,5 +42,6 @@ https://product.kyobobook.co.kr/detail/S000001033116
 ### 진화적 아키텍처
 ```
 2023.10.12 ~
+https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/buildingevolutionaryarchitectures
 https://product.kyobobook.co.kr/detail/S000208693198
 ```
