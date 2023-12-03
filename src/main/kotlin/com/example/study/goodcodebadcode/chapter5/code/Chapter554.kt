@@ -1,8 +1,5 @@
 package com.example.study.goodcodebadcode.chapter5.code
 
-import com.example.study.chapter5.code.Address
-import com.example.study.chapter5.code.Vehicle
-
 class Chapter554 {
     fun sendOwnerALetter(vehicle: Vehicle): String? {
         return getOwnersAddress(vehicle)

@@ -1,6 +1,5 @@
 package com.example.study.goodcodebadcode.chapter8.code
 
-import com.example.study.chapter8.code.FileValueReader
 import org.springframework.stereotype.Component
 
 @Component
