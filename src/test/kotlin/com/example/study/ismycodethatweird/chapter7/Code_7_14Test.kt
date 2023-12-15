@@ -4,6 +4,8 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.annotation.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
+import io.kotest.matchers.types.shouldNotBeInstanceOf
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 
 @DisplayName("Code_7_14")
@@ -24,7 +26,7 @@ class Code_7_14Test : DescribeSpec({
         
         context("중복된 member가 주어질 경우") {
             
-            val party = Code_7_14.Party(listOf("애플"))
+            val party = Code_7_14.Party(mutableListOf("애플"))
             val newMember = "애플"
             
             it("IllegalArgumentException을 던진다.") {
@@ -36,13 +38,23 @@ class Code_7_14Test : DescribeSpec({
         
         context("파티가 최대 인원인 경우") {
 
-            val party = Code_7_14.Party(listOf("애플", "바나나", "멜론", "딸기"))
+            val party = Code_7_14.Party(mutableListOf("애플", "바나나", "멜론", "딸기"))
             val newMember = "수박"
 
             it("IllegalArgumentException을 던진다.") {
                 shouldThrow<IllegalArgumentException> {
                     party.add(newMember)
                 }
+            }
+        }
+        
+        context("members 메소드를 호출하면") {
+            val party = Code_7_14.Party(mutableListOf("애플", "바나나", "멜론", "딸기"))
+            
+            it("member List를 리턴한다.") {
+                val member = party.members()
+                
+                member.shouldBeInstanceOf<List<String>>()
             }
         }
     }

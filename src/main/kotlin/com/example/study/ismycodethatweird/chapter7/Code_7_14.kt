@@ -2,13 +2,13 @@ package com.example.study.ismycodethatweird.chapter7
 
 class Code_7_14 {
     
-    class Party(private val members: List<String> = listOf()) {
+    class Party(private val members: MutableList<String> = mutableListOf()) {
         
         fun add(newMember: String): Party {
             require(!isExist(newMember))
             require(!isFull())
             
-            val adding: MutableList<String> = members.toMutableList()
+            val adding: MutableList<String> = members
             adding.add(newMember)
             
             return Party(adding)
@@ -20,6 +20,10 @@ class Code_7_14 {
         
         private fun isFull(): Boolean {
             return members.size == MAX_MEMBER_COUNT
+        }
+        
+        fun members(): List<String> {
+            return members
         }
         
         companion object {
