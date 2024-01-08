@@ -19,7 +19,7 @@ https://product.kyobobook.co.kr/detail/S000001732402
 
 ### 내 코드가 그렇게 이상한가요? 좋은코드 / 나쁜코드로 배우는 설계입문
 ```
-2023.12.03 ~
+2023.12.03 ~ 2024.01.08
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/ismycodethatweird
 https://product.kyobobook.co.kr/detail/S000202521361
 ```
