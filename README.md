@@ -52,3 +52,10 @@ https://product.kyobobook.co.kr/detail/S000001033116
 https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/buildingevolutionaryarchitectures
 https://product.kyobobook.co.kr/detail/S000208693198
 ```
+
+### 가상 면접 사례로 배우는 대규모 시스템 설계 기초 2
+```
+2024.01.10 ~
+https://github.com/junho3/study-book/tree/main/src/main/kotlin/com/example/study/systemdesigninterview2
+https://product.kyobobook.co.kr/detail/S000211656186
+```
