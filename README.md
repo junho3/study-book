@@ -30,6 +30,7 @@ https://product.kyobobook.co.kr/detail/S000202521361
 ```
 인원: 6명
 기간: 2023.05.19 ~
+주소: https://team-json-delivery.github.io/
 ```
 
 ### 자유 주제
