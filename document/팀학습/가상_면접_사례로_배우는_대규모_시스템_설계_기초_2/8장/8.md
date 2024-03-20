@@ -278,8 +278,8 @@ NoSQL은 `AND is_read = true / is_read = false` 조건을 적용할 수 없으�
 이메일 색인 서버의 주된 병목은 디스크 I/O이다.  
 LSM 트리를 사용하여 디스크에 저장되는 색인을 구조화하는 것이 바람직하다.  
 
-> Nave DEVIEW 2023: 메일검색 서버를 반의 반으로 줄여준 신규 검색엔진 제작기  
-> https://safe.menlosecurity.com/doc/docview/viewer/docNA50C9BC5BD0154a0af6636613b10f04ec1a3a61bd0bf4b69ce22a2877623f43081659d917b8a
+> Naver DEVIEW 2023: 메일검색 서버를 반의 반으로 줄여준 신규 검색엔진 제작기  
+> https://youtu.be/23_tNjIzUPM?si=hjb_qJnxWUhhHNM0  
 
 ### 규모 확장성 및 가용성
 
