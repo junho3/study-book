@@ -69,7 +69,8 @@ https://product.kyobobook.co.kr/detail/S000211656186
 
 ### 켄트 벡의 Tidy First?
 ```
-2024.05.27 ~ 
+2024.05.27 ~
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/Tidy_First
 https://product.kyobobook.co.kr/detail/S000212999739
 ```
 
