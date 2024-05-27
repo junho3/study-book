@@ -64,7 +64,12 @@
 
 > 프록시 패턴?  
 > 토스페이먼츠가 이런 방식으로 결제 API 스펙을 개선한걸로 알고 있음  
-
+> 
+> 기간계(레거시)시스템 작업할 때 활용 중  
+> 기간계 시스템의 dto는 워낙 복잡하다보니 새로운 컨트롤러/서비스에서 레거시 클래스를 직접 호출하는 것이 부담스러움
+> 새로운 컨트롤러/서비스에서는 필요한 값만 정의하고, factory라는 어댑터 성격의 클래스를 통해 레거시 클래스를 호출함
+>
+> paymentControllerV2 > paymentService > LegacyPaymentFactory (레거시 클래스 호출을 위한 dto 정의) > LegacyPaymentService
 
 ## Chapter 05. 읽는 순서
 
