@@ -121,8 +121,25 @@
 > 해당 변수가 초기화 되었음에도 값을 계속 덮어씌우는 스타일이 문제라고 생각함  
 > 변수 선언과 초기화를 분리해야한다면 최소한 final을 선언해야한다고 생각함  
 >
-> 코틀린은 기본적으로 변수 선언과 초기화를 같이 해야함  
-> lateinit var로 초기화를 나중에 하도록 할 수 있지만, 초기화가 없으면 빌드 실패 발생  
+> 코틀린 변수 선언과 초기화별 동작 방식
+>
+> 1. val, var 변수를 선언만 하는 경우 빌드 가능  
+> val number: Int  
+> var number: Int  
+>
+> 2. val, var 변수를 선언하고, 사용하는 경우 빌드 불가능  
+> val number: Int  
+> var number: Int  
+> println(number)  
+>
+> 3. lateinit var 변수를 선언하고, 사용하는 경우 빌드 가능, UninitializedPropertyAccessException 발생    
+> lateinit var text: String  
+> println(text)  
+> 
+> 4. Delegates val, var 변수를 선언하고, 사용하는 경우 빌드 가능, IllegalStateException 발생  
+> val number by Delegates.notNull<Int>()  
+> var number by Delegates.notNull<Int>()  
+> println(number)  
 
 
 ## Chapter 08. 설명하는 변수
