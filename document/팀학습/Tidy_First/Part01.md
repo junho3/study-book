@@ -221,6 +221,7 @@
 > Java에서 도우미 메소드를 private으로 정의하는지? 별도 클래스로 정의 후 주입해서 사용하는지?  
 >
 > TDA 원칙도 도우미 함수에 해당한다고 생각함  
+> if (condition1 == true || condition2 == true) { ... }  
 > if (isCondition1() || isCondition2()) { ... }  
 > doPayAble()  
 >
