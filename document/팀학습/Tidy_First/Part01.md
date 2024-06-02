@@ -234,15 +234,15 @@
 도우미 사용은 또 다른 코드 정리에 도움이 됩니다.  
 
 > 코틀린은 object 키워드로 싱글턴 클래스를 쉽게 만들 수 있음  
-> object 클래스로 helper로 정의 함  
+> object 클래스로 helper를 정의하는 편  
 > 함수 또한 public으로 선언할 수 있어서 테스트 코드를 작성할 수 있음  
 > 
 > Java에서 도우미 메소드를 private으로 정의하는지? 별도 클래스로 정의 후 주입해서 사용하는지?  
 >
 > TDA 원칙도 도우미 함수에 해당한다고 생각함  
-> if (condition1 == true || condition2 == true) { ... }  
-> if (isCondition1() || isCondition2()) { ... }  
-> doPayAble()  
+> if (condition1 == true || condition2 == true) { ... } (x)  
+> if (isCondition1() || isCondition2()) { ... } (x)  
+> doPayAble() (o)  
 >
 > isCondition1(), isCondition2()과 같이 너무 작은 도우미 함수는 의미 없다고 생각함  
 > 도우미 함수도 누군가가 유지 보수해야함  
