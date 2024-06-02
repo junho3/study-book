@@ -196,6 +196,8 @@
 > 함수가 깊어질수록 코드 읽기(이해)가 어려움  
 > 
 > 함수에서 사용하는 값만 파라미터로 넘길 수 있도록 함수의 매개변수를 정의하는게 중요하다고 생각함  
+> foo(hugeDto) (x)  
+> foo(hugeDto.id, hugeDto.name, hugeDto.age) (o)  
 
 
 ## Chapter 11. 비슷한 코드끼리
