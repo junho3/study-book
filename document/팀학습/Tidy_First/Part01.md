@@ -239,12 +239,14 @@
 > 
 > Java에서 도우미 메소드를 private으로 정의하는지? 별도 클래스로 정의 후 주입해서 사용하는지?  
 >
-> TDA 원칙도 도우미 함수에 해당한다고 생각함  
 > if (condition1 == true || condition2 == true) { ... } (x)  
 > if (isCondition1() || isCondition2()) { ... } (x)  
-> doPayAble() (o)  
->
+> if (isPayAble()) { ... } (o)  
 > isCondition1(), isCondition2()과 같이 너무 작은 도우미 함수는 의미 없다고 생각함  
+> 
+> if (condition) { doSomething() } vs doSomething(condition)  
+> 조건을 만족하는 경우에 도우미 함수를 호출하는지? 아니면 도우미 함수에 조건 자체를 넘기는지?  
+> 
 > 도우미 함수도 누군가가 유지 보수해야함  
 > value class Money (val value: BigDecimal) {  
 >   fun toInt() { ... }  
