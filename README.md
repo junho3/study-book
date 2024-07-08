@@ -74,3 +74,10 @@ https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A
 https://product.kyobobook.co.kr/detail/S000212999739
 ```
 
+### MYSQL을 더 빠르게, 성능 최적화 선택과 집중
+```
+2024.07.15 ~ 
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/MYSQL%EC%9D%84_%EB%8D%94_%EB%B9%A0%EB%A5%B4%EA%B2%8C_%EC%84%B1%EB%8A%A5_%EC%B5%9C%EC%A0%81%ED%99%94_%EC%84%A0%ED%83%9D%EA%B3%BC_%EC%A7%91%EC%A4%91
+https://product.kyobobook.co.kr/detail/S000210684181
+```
+
