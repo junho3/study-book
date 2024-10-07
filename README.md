@@ -33,38 +33,11 @@ https://product.kyobobook.co.kr/detail/S000202521361
 주소: https://team-json-delivery.github.io/
 ```
 
-### 자유 주제
+### MYSQL을 더 빠르게, 성능 최적화 선택과 집중
 ```
-2023.09.19 ~ 
-https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%9E%90%EC%9C%A0%EC%A3%BC%EC%A0%9C
-```
-
-### 좋은 코드 나쁜 코드
-```
-2023.05.29 ~ 2023.07.07
-https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C_%EB%82%98%EC%81%9C%EC%BD%94%EB%93%9C
-https://product.kyobobook.co.kr/detail/S000061353995
-```
-
-### 가상 면접 사례로 배우는 대규모 시스템 설계 기초
-```
-2023.07.13 ~ 2023.09.08
-https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EA%B0%80%EC%83%81_%EB%A9%B4%EC%A0%91_%EC%82%AC%EB%A1%80%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8C%80%EA%B7%9C%EB%AA%A8_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%84%A4%EA%B3%84_%EA%B8%B0%EC%B4%88
-https://product.kyobobook.co.kr/detail/S000001033116
-```
-
-### 진화적 아키텍처
-```
-2023.10.12 ~ 2023.11.16
-https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%A7%84%ED%99%94%EC%A0%81_%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98
-https://product.kyobobook.co.kr/detail/S000208693198
-```
-
-### 가상 면접 사례로 배우는 대규모 시스템 설계 기초 2
-```
-2024.01.10 ~ 2024.05.01
-https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EA%B0%80%EC%83%81_%EB%A9%B4%EC%A0%91_%EC%82%AC%EB%A1%80%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8C%80%EA%B7%9C%EB%AA%A8_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%84%A4%EA%B3%84_%EA%B8%B0%EC%B4%88_2
-https://product.kyobobook.co.kr/detail/S000211656186
+2024.07.15 ~ 2024.10.07
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/MYSQL%EC%9D%84_%EB%8D%94_%EB%B9%A0%EB%A5%B4%EA%B2%8C_%EC%84%B1%EB%8A%A5_%EC%B5%9C%EC%A0%81%ED%99%94_%EC%84%A0%ED%83%9D%EA%B3%BC_%EC%A7%91%EC%A4%91
+https://product.kyobobook.co.kr/detail/S000210684181
 ```
 
 ### 켄트 벡의 Tidy First?
@@ -74,10 +47,36 @@ https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A
 https://product.kyobobook.co.kr/detail/S000212999739
 ```
 
-### MYSQL을 더 빠르게, 성능 최적화 선택과 집중
+### 가상 면접 사례로 배우는 대규모 시스템 설계 기초 2
 ```
-2024.07.15 ~ 
-https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/MYSQL%EC%9D%84_%EB%8D%94_%EB%B9%A0%EB%A5%B4%EA%B2%8C_%EC%84%B1%EB%8A%A5_%EC%B5%9C%EC%A0%81%ED%99%94_%EC%84%A0%ED%83%9D%EA%B3%BC_%EC%A7%91%EC%A4%91
-https://product.kyobobook.co.kr/detail/S000210684181
+2024.01.10 ~ 2024.05.01
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EA%B0%80%EC%83%81_%EB%A9%B4%EC%A0%91_%EC%82%AC%EB%A1%80%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8C%80%EA%B7%9C%EB%AA%A8_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%84%A4%EA%B3%84_%EA%B8%B0%EC%B4%88_2
+https://product.kyobobook.co.kr/detail/S000211656186
 ```
 
+### 진화적 아키텍처
+```
+2023.10.12 ~ 2023.11.16
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%A7%84%ED%99%94%EC%A0%81_%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98
+https://product.kyobobook.co.kr/detail/S000208693198
+```
+
+### 자유 주제
+```
+2023.09.19 ~ 
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%9E%90%EC%9C%A0%EC%A3%BC%EC%A0%9C
+```
+
+### 가상 면접 사례로 배우는 대규모 시스템 설계 기초
+```
+2023.07.13 ~ 2023.09.08
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EA%B0%80%EC%83%81_%EB%A9%B4%EC%A0%91_%EC%82%AC%EB%A1%80%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EB%8C%80%EA%B7%9C%EB%AA%A8_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%84%A4%EA%B3%84_%EA%B8%B0%EC%B4%88
+https://product.kyobobook.co.kr/detail/S000001033116
+```
+
+### 좋은 코드 나쁜 코드
+```
+2023.05.29 ~ 2023.07.07
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C_%EB%82%98%EC%81%9C%EC%BD%94%EB%93%9C
+https://product.kyobobook.co.kr/detail/S000061353995
+```
