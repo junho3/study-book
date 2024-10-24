@@ -32,6 +32,11 @@ https://product.kyobobook.co.kr/detail/S000202521361
 기간: 2023.05.19 ~
 주소: https://team-json-delivery.github.io/
 ```
+### JVM 밑바닥까지 파헤치기
+```
+2024.10.28 ~  
+https://product.kyobobook.co.kr/detail/S000213057051  
+```
 
 ### MYSQL을 더 빠르게, 성능 최적화 선택과 집중
 ```
