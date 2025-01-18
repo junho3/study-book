@@ -34,7 +34,7 @@ https://product.kyobobook.co.kr/detail/S000202521361
 ```
 ### JVM 밑바닥까지 파헤치기
 ```
-2024.10.28 ~  
+2024.10.28 ~ 2025.01.09 (종료) 
 https://product.kyobobook.co.kr/detail/S000213057051  
 ```
 
