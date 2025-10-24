@@ -1,5 +1,7 @@
 # Continuous Delivery (지속적 배포)
 
+https://dora.dev/capabilities/continuous-delivery/
+
 ## 0. 서론
 
 지속적 배포(Continuous Delivery) 란, 어떤 종류의 변경 사항이든 필요할 때마다 빠르고, 안전하며, 지속 가능한 방식으로 배포할 수 있는 능력을 의미합니다.
