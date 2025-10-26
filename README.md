@@ -33,17 +33,25 @@ https://product.kyobobook.co.kr/detail/S000202521361
 주소: https://team-json-delivery.github.io/
 ```
 
-### 시스템 설계 면접 완벽 가이드
+### 함께 자라기
 ```
-2025.06.16 ~
-https://product.kyobobook.co.kr/detail/S000216400799
+2025.10.29 ~  
+https://product.kyobobook.co.kr/detail/S000001033071
 ```
 
+
+### 시스템 설계 면접 완벽 가이드
+```
+2025.06.16 ~ 2025.09.24
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%84%A4%EA%B3%84_%EB%A9%B4%EC%A0%91_%EC%99%84%EB%B2%BD_%EA%B0%80%EC%9D%B4%EB%93%9C
+https://product.kyobobook.co.kr/detail/S000216400799
+```
 
 
 ### JVM 밑바닥까지 파헤치기
 ```
 2024.10.28 ~ 2025.01.09 (종료) 
+https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/JVM_%EB%B0%91%EB%B0%94%EB%8B%A5%EA%B9%8C%EC%A7%80_%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0
 https://product.kyobobook.co.kr/detail/S000213057051  
 ```
 
