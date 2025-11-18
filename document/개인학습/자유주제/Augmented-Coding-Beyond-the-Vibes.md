@@ -2,7 +2,7 @@
 
 https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes
 
-https://github.com/dingcodingco/kentback-spring/blob/main/CLAUDE.md
+https://github.com/KentBeck/BPlusTree3/blob/ca80e4d85a99cd0af2effe717f709d43e80403bc/rust/docs/CLAUDE.md
 
 게시글을 GPT 도움을 받아 번역한 내용
 
