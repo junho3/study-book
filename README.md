@@ -2,6 +2,20 @@
 
 ## 개인
 
+### 개발자를 넘어 기술리더로 가는 길
+```
+2025.12.09 ~
+https://github.com/junho3/study-book/tree/main/document/%EA%B0%9C%EC%9D%B8%ED%95%99%EC%8A%B5/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC_%EB%84%98%EC%96%B4_%EA%B8%B0%EC%88%A0%EB%A6%AC%EB%8D%94%EB%A1%9C_%EA%B0%80%EB%8A%94_%EA%B8%B8
+https://product.kyobobook.co.kr/detail/S000202010365
+```
+
+### 내 코드가 그렇게 이상한가요? 좋은코드 / 나쁜코드로 배우는 설계입문
+```
+2023.12.03 ~ 2024.01.08
+https://github.com/junho3/study-book/tree/main/document/%EA%B0%9C%EC%9D%B8%ED%95%99%EC%8A%B5/%EB%82%B4_%EC%BD%94%EB%93%9C%EA%B0%80_%EA%B7%B8%EB%A0%87%EA%B2%8C_%EC%9D%B4%EC%83%81%ED%95%9C%EA%B0%80%EC%9A%94%3F_%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C_%EB%82%98%EC%81%9C%EC%BD%94%EB%93%9C%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EC%84%A4%EA%B3%84%EC%9E%85%EB%AC%B8
+https://product.kyobobook.co.kr/detail/S000202521361
+```
+
 ### Multithreaded JavaScript
 ```
 2023.07.10 ~ 2023.07.11
@@ -12,16 +26,9 @@ https://product.kyobobook.co.kr/detail/S000061353477
 
 ### 운영체제 아주 쉬운 세 가지 이야기
 ```
-2023.07.12 ~
+2023.07.12 ~ 종료
 https://github.com/junho3/study-book/tree/main/document/%EA%B0%9C%EC%9D%B8%ED%95%99%EC%8A%B5/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C_%EC%95%84%EC%A3%BC_%EC%89%AC%EC%9A%B4_%EC%84%B8_%EA%B0%80%EC%A7%80_%EC%9D%B4%EC%95%BC%EA%B8%B0
 https://product.kyobobook.co.kr/detail/S000001732402
-```
-
-### 내 코드가 그렇게 이상한가요? 좋은코드 / 나쁜코드로 배우는 설계입문
-```
-2023.12.03 ~ 2024.01.08
-https://github.com/junho3/study-book/tree/main/document/%EA%B0%9C%EC%9D%B8%ED%95%99%EC%8A%B5/%EB%82%B4_%EC%BD%94%EB%93%9C%EA%B0%80_%EA%B7%B8%EB%A0%87%EA%B2%8C_%EC%9D%B4%EC%83%81%ED%95%9C%EA%B0%80%EC%9A%94%3F_%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C_%EB%82%98%EC%81%9C%EC%BD%94%EB%93%9C%EB%A1%9C_%EB%B0%B0%EC%9A%B0%EB%8A%94_%EC%84%A4%EA%B3%84%EC%9E%85%EB%AC%B8
-https://product.kyobobook.co.kr/detail/S000202521361
 ```
 
 ---
@@ -40,14 +47,12 @@ https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A
 https://product.kyobobook.co.kr/detail/S000001033071
 ```
 
-
 ### 시스템 설계 면접 완벽 가이드
 ```
 2025.06.16 ~ 2025.09.24
 https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%84%A4%EA%B3%84_%EB%A9%B4%EC%A0%91_%EC%99%84%EB%B2%BD_%EA%B0%80%EC%9D%B4%EB%93%9C
 https://product.kyobobook.co.kr/detail/S000216400799
 ```
-
 
 ### JVM 밑바닥까지 파헤치기
 ```
