@@ -42,7 +42,7 @@ https://product.kyobobook.co.kr/detail/S000001732402
 
 ### 함께 자라기
 ```
-2025.10.29 ~  
+2025.10.29 ~ 2025.12.17
 https://github.com/junho3/study-book/tree/main/document/%ED%8C%80%ED%95%99%EC%8A%B5/%ED%95%A8%EA%BB%98_%EC%9E%90%EB%9D%BC%EA%B8%B0
 https://product.kyobobook.co.kr/detail/S000001033071
 ```
