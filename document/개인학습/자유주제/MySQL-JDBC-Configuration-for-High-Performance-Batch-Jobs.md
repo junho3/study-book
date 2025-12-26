@@ -109,3 +109,82 @@ A. RTT보다 파싱/옵티마이저 비용이 훨씬 크기 때문입니다.
 - false: 매번 SQL 파싱 + 플랜 생성
 - true: 파싱/플랜 1회, 이후 EXECUTE만 반복
 - RTT 증가는 무시 가능한 수준
+
+
+## Improving Batch Update Performance
+
+여러 행을 INSERT 또는 UPDATE할 때, 단건 쿼리를 반복해서 `executeUpdate()`로 실행하는 것보다 JDBC의 `Statement.batchUpdate()` 메서드를 사용하는 편이 더 빠를 수 있습니다.  
+MySQL에서는 JDBC 연결 URL에 `rewriteBatchedStatements=true` 옵션을 설정하면 batchUpdate 성능을 추가로 최적화할 수 있습니다.
+
+이 옵션의 기본값은 false이므로, 사용하려면 명시적으로 활성화해야 합니다.  
+옵션을 켜면 MySQL JDBC 드라이버가 여러 개의 개별 쿼리를 하나의 SQL 문으로 합쳐서 전송합니다.  
+
+예를 들어, 다음과 같은 INSERT 쿼리를 사용해 batchUpdate로 3건을 삽입한다고 가정해보겠습니다.
+
+### 단일 INSERT 형태
+
+```
+INSERT INTO access_log(access_date_time, ip, username) VALUES (?, ?, ?);
+```
+
+rewriteBatchedStatements=true가 설정되지 않은 경우, 드라이버는 위 쿼리를 3번 각각 실행합니다.
+
+반면 이 옵션을 활성화하면, 드라이버는 이를 하나의 쿼리로 병합합니다.
+
+
+### 병합된 INSERT 형태
+
+```
+INSERT INTO access_log(access_date_time, ip, username) VALUES
+(?, ?, ?),
+(?, ?, ?),
+(?, ?, ?);
+```
+
+다중 VALUES 구문을 사용할 수 없는 경우에도, 드라이버는 여러 개의 INSERT 또는 UPDATE 문을 `;`로 연결해 하나의 요청으로 묶어 전송합니다.
+
+이 방식의 장점은 다음과 같습니다.
+
+- 네트워크 왕복(Round Trip) 횟수가 줄어들고
+- 서버가 SQL을 한 번만 파싱하고 실행하게 되어
+- 전체 성능이 향상되고 DB CPU 사용량도 감소합니다
+
+다만, 하나로 합쳐진 쿼리는 실행 시간이 길어질 수 있기 때문에, 복제(Replication) 환경에서는 복제 지연(replication lag) 이 더 커질 수 있습니다.
+
+
+### ⚠️ 주의할 점
+
+`rewriteBatchedStatements=true` 옵션은 다른 JDBC 옵션들과 충돌할 수 있습니다.
+
+- `useServerPrepStmts=true`와 함께 사용하면 오류가 발생할 수 있고
+- `useCursorFetch=true`를 지정하면 내부적으로 useServerPrepStmts=true가 자동 활성화되므로 동일한 주의가 필요합니다.
+
+`Connector/J 8.0.29`까지는
+`rewriteBatchedStatements가` `useCursorFetch=true` 또는
+`useServerPrepStmts=true`와 함께 사용되면 무시된다고 문서에 명시되어 있었지만,
+8.0.30부터는 이 제한이 제거되었습니다.
+
+또한, 병합된 배치 쿼리의 크기가 MySQL의 `max_allowed_packet` 값을 초과하면 오류가 발생합니다.
+대량의 데이터를 한 번에 INSERT/UPDATE하려면 이 값을 충분히 크게 설정해야 합니다.
+
+### max_allowed_packet 관련
+
+- MySQL 서버 설정 또는 세션 단위로 설정 가능
+- 다음 쿼리로 확인할 수 있음:
+
+```
+SHOW VARIABLES LIKE 'max%';
+```
+
+한편, bulk_insert_buffer_size 설정은 현재 거의 사용되지 않는 MyISAM 엔진 전용 설정이므로, InnoDB를 사용하는 경우에는 신경 쓰지 않아도 됩니다.
+
+---
+
+이처럼 JDBC 옵션들 간에는 상호작용과 충돌이 많기 때문에, 읽기(Read)와 쓰기(Write) 모두에 최적인 단 하나의 DB 설정을 찾는 것은 어렵습니다.
+
+대안으로는, 대규모 읽기 작업용 DataSource 대규모 쓰기(batch) 작업용 DataSource 를 애플리케이션 레벨에서 분리해 운영하는 방법도 고려할 수 있습니다.
+
+마지막으로, Connector/J 8.0.28 이하 버전에서는 batchUpdate로 BLOB(Binary Large Object) 데이터를 INSERT할 때 NullPointerException이 발생하는 버그가 있었지만, 이는 최신 버전에서 이미 수정되었습니다.
+
+
+
