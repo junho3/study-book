@@ -188,3 +188,246 @@ SHOW VARIABLES LIKE 'max%';
 
 
 
+## Options for Large-Scale Data Retrieval
+
+Spring Batch와 MySQL을 함께 사용하는 애플리케이션에서 `JdbcCursorItemReader`를 기본 설정 그대로 사용해 쿼리를 실행하면, 전체 결과 집합(ResultSet)을 한 번에 가져와 애플리케이션 메모리에 적재합니다.  
+대용량 데이터를 조회하는 경우, 이 방식은 Out Of Memory(OOM) 오류를 유발할 수 있습니다.  
+이를 방지하려면 `ResultSet 스트리밍` 또는 `서버 사이드 커서`를 사용해야 합니다.
+
+
+### 한 행씩 스트리밍으로 결과 조회하기
+
+ResultSet 스트리밍은 결과를 한꺼번에 받지 않고, 행 단위로 점진적으로 가져오는 방식입니다.
+
+이를 사용하려면 PreparedStatement를 다음과 같이 설정해야 합니다.
+
+스트리밍용 PreparedStatement 생성
+```
+PreparedStatement statement = con.prepareStatement(
+    sql,
+    ResultSet.TYPE_FORWARD_ONLY,
+    ResultSet.CONCUR_READ_ONLY
+);
+
+statement.setFetchSize(Integer.MIN_VALUE);
+```
+
+주의할 점은, `setFetchSize(Integer.MIN_VALUE)` 호출은 JDBC 명세상으로는 올바른 사용이 아니라는 점입니다.  
+java.sql.Statement의 Javadoc에 따르면 setFetchSize(int)에 0보다 작은 값을 전달하면 SQLException이 발생해야 합니다.
+
+그럼에도 불구하고, MySQL Connector/J는 `Integer.MIN_VALUE`가 전달되면 스트리밍 모드를 활성화하도록 구현되어 있기 때문에, 개발자는 사실상 이 방식을 사용할 수밖에 없습니다.
+
+
+#### statement.setFetchSize(Integer.MIN_VALUE)의 의미
+
+> JDBC 표준에서 Statement.setFetchSize(int rows)의 의미는 다음과 같습니다.  
+> - rows ≥ 0 
+>   - 드라이버에게 한 번에 가져올 행 수에 대한 힌트를 준다
+> - rows < 0
+>   - 명세상 허용되지 않음
+>   - SQLException을 던져야 한다고 명시됨
+> 
+> 즉, JDBC 명세 관점에서는 statement.setFetchSize(Integer.MIN_VALUE); 는
+> - 잘못된 코드이며
+> - 예외를 던져야 하는 호출입니다.
+> 
+> MySQL은 JDBC 명세에 “표준적인 스트리밍 결과 처리 방식”이 없습니다.  
+> 그래서 MySQL Connector/J 팀은 다음과 같은 **편법(hack)**을 선택했습니다:
+> 
+> fetchSize에 Integer.MIN_VALUE가 오면
+> - “아, 개발자가 스트리밍을 원하네”
+> - 한 row씩 네트워크로 읽는 streaming mode 활성화
+
+스트리밍 모드는 메모리 사용량을 크게 줄여주지만, 그 대가로 행 수만큼 네트워크 호출이 발생합니다.  
+예를 들어 100만 행을 조회하면, 100만 번의 네트워크 전송이 일어납니다.
+
+또한 다음과 같은 단점도 있습니다.
+- 배치 크기를 직접 제어할 수 없다
+- ResultSet이 닫히기 전까지 같은 커넥션에서 다른 쿼리를 실행할 수 없다
+
+
+### Spring Batch에서의 스트리밍 설정
+
+Spring Batch에서는 `JdbcCursorItemReader.setFetchSize(Integer.MIN_VALUE)`를 호출하면 스트리밍 모드가 활성화됩니다.
+
+`ResultSet.TYPE_FORWARD_ONLY` 같은 Statement 생성 옵션은 `JdbcCursorItemReader` 내부에서 자동으로 적용됩니다.  
+하지만 `JdbcCursorItemReader.verifyCursorPosition` 속성이 기본값인 `true`로 유지되면, `TYPE_FORWARD_ONLY`와 충돌하여 다음과 같은 오류가 발생합니다.
+
+verifyCursorPosition=true로 인한 오류
+```
+Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY.;
+nested exception is java.sql.SQLException
+```
+
+
+따라서 MySQL에서 행 단위 스트리밍을 위한 JdbcCursorItemReader는 다음과 같이 구성해야 합니다.
+
+MySQL 스트리밍용 JdbcCursorItemReader 예시
+```
+return new JdbcCursorItemReaderBuilder<T>()
+    .dataSource(this.dataSource)
+    .sql(sql)
+    .rowMapper(rowMapper)
+    .fetchSize(Integer.MIN_VALUE)
+    .verifyCursorPosition(false);
+```
+
+
+## 서버 사이드 커서 사용하기
+
+MySQL의 서버 사이드 커서는 조회 결과를 서버(DBMS)의 임시 테이블에 저장한 뒤, 클라이언트(애플리케이션)가 설정된 크기 단위로 데이터를 나눠서 가져오는 방식입니다.
+
+- MySQL 5.0.2 이상에서 지원
+- JDBC URL에 useCursorFetch=true를 추가하면 활성화 가능
+- 기본값은 false이므로 명시적으로 설정해야 함
+
+단, useCursorFetch=true만 설정한다고 해서 서버 사이드 커서가 바로 사용되는 것은 아닙니다.  
+반드시 `fetch size를 0보다 큰 값`으로 지정해야 서버 사이드 커서가 동작합니다.
+
+이 fetch size는 다음 방법으로 설정할 수 있습니다.
+- JDBC API의 `Statement.setFetchSize(int)` (쿼리 단위)
+- JDBC URL의 `defaultFetchSize` 옵션 (기본값 설정)
+
+
+### Spring Batch에서 서버 사이드 커서 사용 시 권장 사항
+
+Spring Batch에서는 JdbcCursorItemReader.setFetchSize(int)로 fetch size를 지정할 수 있습니다.
+
+이 값은 `Step 설정의 chunk size와 동일하게 맞추는 것`을 권장합니다.
+
+### 옵션 간 충돌에 대한 주의사항
+
+앞서 언급했듯이, `useCursorFetch=true`를 활성화하면 자동으로 `useServerPrepStmts=true`도 함께 활성화됩니다.
+
+따라서 `rewriteBatchedStatements=true` 옵션과 함께 사용할 경우 충돌이 발생할 수 있으므로 주의가 필요합니다.
+
+
+
+### 셀프 Q&A
+
+#### Q1: 스트리밍 모드와 서버 사이드 커서 방식의 특징을 알려주세요.
+
+A1. 아래는 MySQL + Spring Batch 기준으로 스트리밍 모드(ResultSet Streaming) 와 서버 사이드 커서(Server-side Cursor) 를 실무 관점에서 비교한 표입니다.
+
+| 구분                 | 스트리밍 모드 (ResultSet Streaming)   | 서버 사이드 커서 (Server-side Cursor)          |
+|--------------------|---------------------------------|-----------------------------------------|
+| 기본 개념              | 결과를 **한 행씩 즉시 전송**              | 결과를 **서버 임시 테이블에 저장 후 분할 전송**           |
+| 활성화 방법             | `fetchSize = Integer.MIN_VALUE` | `useCursorFetch=true` + `fetchSize > 0` |
+| JDBC 명세 준수         | ❌ (비표준 트릭)                      | ✅ (표준 fetchSize 사용)                     |
+| 데이터 저장 위치          | 서버 → 바로 전송                      | **MySQL 서버 임시 테이블**                     |
+| 메모리 사용 (애플리케이션)    | **매우 적음**                       | 적음                                      |
+| 메모리/디스크 사용 (DB 서버) | 낮음                              | **높아질 수 있음**                            |
+| 네트워크 호출            | **행 수만큼**                       | **fetchSize 단위**                        |
+| fetchSize 제어       | ❌ 불가능                           | ✅ 가능                                    |
+| Chunk size 연동      | ❌ 불가                            | ✅ 권장                                    |
+| 커넥션 점유             | ResultSet 종료 시까지 점유             | ResultSet 종료 시까지 점유                     |
+| 다른 쿼리 실행           | ❌ 불가                            | ❌ 불가                                    |
+| 대량 데이터 안정성         | 중간                              | **높음**                                  |
+| 구현 난이도             | 낮음                              | 중간                                      |
+| 설정 복잡도             | 낮음                              | **높음 (옵션 충돌 주의)**                       |
+
+
+##### 스트리밍 모드가 적합한 경우
+
+- 데이터 양은 많지만 단순 변환 후 즉시 처리 
+- 배치 크기 조절이 필요 없는 경우 
+- 네트워크 비용보다 메모리 절약이 더 중요한 경우 
+- 빠르게 OOM 문제만 우회하고 싶은 경우 
+
+예시 
+- 로그 단순 스캔 
+- 대량 데이터 검증 
+- 일회성 배치 작업
+
+##### 서버 사이드 커서가 적합한 경우 
+
+- 정기 배치 작업 
+- chunk 기반 트랜잭션 관리 필요 
+- 대량 데이터 처리의 안정성과 재현성이 중요한 경우 
+- 성능 튜닝이 필요한 경우
+
+예시
+
+- 정산 배치
+- 통계 집계
+- 대규모 마이그레이션
+- Spring Batch 기반 ETL
+
+
+#### Q2: JPA 만으로 서버 사이드 커서 방식을 사용할 수 있나요?
+
+> 예전에 JPA + Stream 같이 시도해본 PR  
+> https://github.com/junho3/practice-java-spring-boot/pull/52
+
+A2. 순수 JPA만으로는 MySQL 서버 사이드 커서 방식을 제대로 사용하기는 어렵습니다.
+
+JPA의 핵심 전제
+
+JPA는 다음을 전제로 설계되었습니다.
+ 
+- 쿼리 결과를 엔티티 단위로 영속성 컨텍스트에 로딩
+- 조회된 엔티티를 1차 캐시에서 관리
+- 객체 상태 변경 감지(Dirty Checking)를 전제로 동작
+
+즉, “조회 = 메모리에 올려 관리한다” 라는 철학을 갖고 있습니다.
+
+반면 서버 사이드 커서는:
+
+- DB 서버에 결과를 보관
+- 클라이언트는 fetchSize 단위로 조금씩 읽기
+- 전체 결과를 메모리에 올리지 않음
+
+즉, “조회 = 스트림처럼 흘려보내며 처리” 이 두 철학은 구조적으로 충돌합니다.
+
+
+현실적인 절충안
+
+- 읽기(JDBC) + 쓰기(JPA)
+- 조회: JdbcCursorItemReader (서버 사이드 커서)
+- 처리/가공: Java 객체 
+- 저장: JPA saveAll() + batch 옵션
+
+이 조합은 대규모 실무 배치에서 가장 흔한 패턴입니다.
+
+
+#### Q3: 결국, 대량 데이터를 처리할 때 서버 사이드 커서 방식만 사용하면 되지 않나요? 스트리밍 방식이 왜 필요한가요?
+
+A3. 동일한 SELECT 쿼리를 대량으로 처리한다는 전제에서는 서버 사이드 커서가 “대부분의 운영 배치”에서 더 우수합니다.   
+그래서 “그렇다면 스트리밍 모드는 왜 존재하는가?” 라는 의문이 생기는 것이 정상입니다.
+
+동일한 SELECT 쿼리라면:
+
+- fetchSize 제어 가능
+- 네트워크 효율적
+- chunk 기반 처리 가능
+- 재현성·운영 안정성 높음
+
+👉 서버 사이드 커서가 구조적으로 우위입니다.
+
+스트리밍 모드는 “열등한 대안”이 아니라, 목적이 다른 도구입니다.
+
+이유 1️⃣ 서버 리소스를 거의 쓰지 않는다
+
+- 서버 사이드 커서:
+  - 결과를 서버 임시 테이블에 저장 
+  - 메모리 or 디스크 사용 
+  - 긴 쿼리 + 많은 커서 = 서버 부담
+- 스트리밍 모드:
+  - 결과를 즉시 전송 
+  - 서버에 결과 보관 안 함 
+  - 임시 테이블 없음
+
+👉 DB 서버 리소스가 극도로 제한된 환경에서는 스트리밍이 더 안전합니다.
+
+이유 3️⃣ MySQL 서버 사이드 커서의 현실적 제약
+
+서버 사이드 커서는 “이론적으로 우수”하지만, 현실에서는:
+
+- 임시 테이블이 디스크로 내려갈 수 있음
+- 대규모 동시 커서 사용 시 성능 급락
+- 스토리지 I/O 병목
+- 운영 중 커서 누수 리스크
+
+👉 “모든 SELECT에 서버 사이드 커서를 쓰는 것”은 위험합니다.
+
+
